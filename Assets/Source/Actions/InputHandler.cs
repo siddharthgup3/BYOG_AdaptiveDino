@@ -9,6 +9,7 @@ namespace BreakYourOwnGame
 {
     public class InputHandler : SerializedMonoBehaviour
     {
+        
         [OdinSerialize] private KeyCode keyCodeTrigger = KeyCode.Space;
         [OdinSerialize] private BooleanVariable canPlayerJump;
         [OdinSerialize] private BooleanVariable canObstacleJump;

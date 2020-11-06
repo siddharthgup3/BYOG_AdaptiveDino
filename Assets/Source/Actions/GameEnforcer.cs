@@ -23,7 +23,8 @@ namespace BreakYourOwnGame
         [OdinSerialize] private Dictionary<string, BooleanVariable> gameplayModes;
         [OdinSerialize] private TextMeshProUGUI debugText;
         [OdinSerialize] private Spawner _spawner;
-        
+        [OdinSerialize] private ShakeCamera _shakeCamera;
+
         [ShowInInspector, ReadOnly] private bool gameRunning;
 
         private IEnumerator unlearning;
@@ -117,7 +118,7 @@ namespace BreakYourOwnGame
             if (horizontal)
             {
                 _spriteRenderer.flipX = !_spriteRenderer.flipX;
-                StartCoroutine(FlipObstacleSpeed(lastTimeScale));
+                StartCoroutine(Bleh(lastTimeScale));
             }
             else
             {
@@ -125,7 +126,7 @@ namespace BreakYourOwnGame
             }
         }
 
-        private IEnumerator FlipObstacleSpeed(float timer)
+        private IEnumerator Bleh(float timer)
         {
             yield return new WaitForSeconds(timer/2f);
             var temp = _spriteRenderer.flipX ? _spawner.rightSpawnedObstacles : _spawner.leftSpawnedObstacles;
@@ -157,6 +158,8 @@ namespace BreakYourOwnGame
             var timeScaleToGoBackTo = Time.timeScale;
 
             Time.timeScale = 0f;
+            
+            _shakeCamera.TriggerShake(0.01f);
 
             float temp = 1;
             unlearningText.gameObject.SetActive(true);

@@ -13,11 +13,15 @@ namespace BreakYourOwnGame
     {
         [SerializeField] private AudioClip levelUp;
         [OdinSerialize] private BooleanVariable easterEgg;
-        
+
+        [OdinSerialize] private ParticleSystem confettiParticleSystem;
+
         [ShowInInspector, ReadOnly] private TextMeshProUGUI scoreText;
         [ShowInInspector, ReadOnly] private uint actualScore;
 
         private float timeSinceStart;
+        private uint newLevel = 1;
+
         private void Awake()
         {
             scoreText = GetComponent<TextMeshProUGUI>();
@@ -32,9 +36,12 @@ namespace BreakYourOwnGame
             {
                 easterEgg.Value = true;
             }
-            
-            if (actualScore % 1000 == 0 && actualScore > 0)
+
+
+            if (actualScore / 1000 == newLevel && actualScore > 0)
             {
+                newLevel++;
+                confettiParticleSystem.Play();
                 Sound.audSource.PlayOneShot(levelUp, 0.5f);
                 Time.timeScale += Time.timeScale / 10f;
             }
@@ -44,6 +51,7 @@ namespace BreakYourOwnGame
             {
                 temp += "0";
             }
+
             scoreText.text = temp + actualScore;
         }
     }

@@ -1,10 +1,11 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace BreakYourOwnGame.MainMenu
 {
-    public class MainMenuButtons : MonoBehaviour
+    public class MainMenuButtons : SerializedMonoBehaviour
     {
         public void LoadGame()
         {

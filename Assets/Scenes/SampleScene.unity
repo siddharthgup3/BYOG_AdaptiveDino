@@ -354,6 +354,9 @@ MonoBehaviour:
     - Name: _spawner
       Entry: 6
       Data: 
+    - Name: _shakeCamera
+      Entry: 6
+      Data: 
     - Name: _spriteRenderer
       Entry: 6
       Data: 
@@ -369,6 +372,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -472,6 +476,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b339432161ef4b38b88edeb964ca7a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: shakeDuration
+      Entry: 4
+      Data: 0.1
+    - Name: shakeMagnitude
+      Entry: 4
+      Data: 0.1
+    - Name: dampingSpeed
+      Entry: 4
+      Data: 1
+    - Name: initialPosition
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!1 &600474127
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,6 +873,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433d8856d18b468eb9c2f18dafb19495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!212 &1415200169 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2593819037330878240, guid: d65ade6c8c85b85438363d0e772725ea, type: 3}
@@ -991,6 +1049,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 26e0bac0be91ca14ea19aa03de791b38, type: 2}
     - {fileID: 1954501053}
     - {fileID: 1674867949}
+    - {fileID: 519420033}
     - {fileID: 1415200169}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -1092,9 +1151,12 @@ MonoBehaviour:
     - Name: _spawner
       Entry: 10
       Data: 8
-    - Name: _spriteRenderer
+    - Name: _shakeCamera
       Entry: 10
       Data: 9
+    - Name: _spriteRenderer
+      Entry: 10
+      Data: 10
 --- !u!4 &1702770912
 Transform:
   m_ObjectHideFlags: 0
@@ -1505,6 +1567,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: d4b6b7dae727c0c45809c08954e07e73, type: 2}
+    - {fileID: 3630225606740950783}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -1513,6 +1576,9 @@ MonoBehaviour:
     - Name: easterEgg
       Entry: 10
       Data: 0
+    - Name: confettiParticleSystem
+      Entry: 10
+      Data: 1
   levelUp: {fileID: 8300000, guid: ff0e1d0a7e3bc7e4c9381b900d938920, type: 3}
 --- !u!114 &1892224409
 MonoBehaviour:
@@ -2253,3 +2319,8 @@ PrefabInstance:
       objectReference: {fileID: 8795425584878978349, guid: d65ade6c8c85b85438363d0e772725ea, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65ade6c8c85b85438363d0e772725ea, type: 3}
+--- !u!198 &3630225606740950783 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7282136602230364458, guid: d65ade6c8c85b85438363d0e772725ea, type: 3}
+  m_PrefabInstance: {fileID: 3630225606740950782}
+  m_PrefabAsset: {fileID: 0}
