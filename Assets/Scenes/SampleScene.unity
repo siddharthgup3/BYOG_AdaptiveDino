@@ -1503,12 +1503,16 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: d4b6b7dae727c0c45809c08954e07e73, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: easterEgg
+      Entry: 10
+      Data: 0
   levelUp: {fileID: 8300000, guid: ff0e1d0a7e3bc7e4c9381b900d938920, type: 3}
 --- !u!114 &1892224409
 MonoBehaviour:
