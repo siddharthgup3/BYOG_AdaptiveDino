@@ -19,7 +19,6 @@ namespace BreakYourOwnGame
         {
             if (shakeDuration > 0)
             {
-                Debug.Log($"Shaking, duration remaining = {shakeDuration}");
                 transform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude;
                 shakeDuration -= Time.deltaTime * dampingSpeed;
             }
@@ -30,7 +29,6 @@ namespace BreakYourOwnGame
         
         public void TriggerShake(float D) //call this function in scripts that require the camera to be shaken.
         {
-            Debug.Log($"New shake");
             shakeDuration = D;
         }
     }
