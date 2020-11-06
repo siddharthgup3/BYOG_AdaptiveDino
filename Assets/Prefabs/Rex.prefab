@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 2112131702997481231}
   - component: {fileID: 3396158077546025167}
   - component: {fileID: 3745195267363352372}
-  - component: {fileID: 5831033692996255805}
   - component: {fileID: 4634529471254203677}
   m_Layer: 0
   m_Name: Rex
@@ -341,27 +340,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5831033692996255805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3630225607316134135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0caf5bced877dd04fbea96dc1105a384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
 --- !u!114 &4634529471254203677
 MonoBehaviour:
   m_ObjectHideFlags: 0

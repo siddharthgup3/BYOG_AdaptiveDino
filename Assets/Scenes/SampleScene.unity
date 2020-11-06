@@ -253,6 +253,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 2d5337772c5767443a4630e90063c0b2, type: 2}
     - {fileID: 11400000, guid: 04fd631471d985f41bbac4e472646082, type: 2}
     - {fileID: 11400000, guid: 26e0bac0be91ca14ea19aa03de791b38, type: 2}
+    - {fileID: 1954501053}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -347,7 +348,15 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  debugText: {fileID: 1954501053}
+    - Name: debugText
+      Entry: 10
+      Data: 7
+    - Name: _spawner
+      Entry: 6
+      Data: 
+    - Name: _spriteRenderer
+      Entry: 6
+      Data: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,11 +824,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433d8856d18b468eb9c2f18dafb19495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &1415200169 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2593819037330878240, guid: d65ade6c8c85b85438363d0e772725ea, type: 3}
+  m_PrefabInstance: {fileID: 3630225606740950782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1531956008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8118309590256140372, guid: d65ade6c8c85b85438363d0e772725ea, type: 3}
   m_PrefabInstance: {fileID: 3630225606740950782}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1674867949 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7771074265411638686, guid: 6042442c97661a14dadc87e706082abd, type: 3}
+  m_PrefabInstance: {fileID: 1895395027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375f1b1283b548dabae2ca5fc0457179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1683128874
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +989,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 2d5337772c5767443a4630e90063c0b2, type: 2}
     - {fileID: 11400000, guid: 04fd631471d985f41bbac4e472646082, type: 2}
     - {fileID: 11400000, guid: 26e0bac0be91ca14ea19aa03de791b38, type: 2}
+    - {fileID: 1954501053}
+    - {fileID: 1674867949}
+    - {fileID: 1415200169}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -1058,7 +1086,15 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  debugText: {fileID: 1954501053}
+    - Name: debugText
+      Entry: 10
+      Data: 7
+    - Name: _spawner
+      Entry: 10
+      Data: 8
+    - Name: _spriteRenderer
+      Entry: 10
+      Data: 9
 --- !u!4 &1702770912
 Transform:
   m_ObjectHideFlags: 0
@@ -1629,7 +1665,7 @@ PrefabInstance:
     - target: {fileID: 6762633319047933371, guid: 6042442c97661a14dadc87e706082abd, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6762633319047933371, guid: 6042442c97661a14dadc87e706082abd, type: 3}
     - target: {fileID: 6762633319047933371, guid: 6042442c97661a14dadc87e706082abd, type: 3}
       propertyPath: obstacle
       value: 

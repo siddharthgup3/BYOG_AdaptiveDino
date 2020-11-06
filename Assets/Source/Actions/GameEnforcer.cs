@@ -17,17 +17,18 @@ namespace BreakYourOwnGame
 
         [FoldoutGroup("TMP references")] [OdinSerialize]
         private TextMeshProUGUI resetText;
-
         [FoldoutGroup("TMP references")] [OdinSerialize]
         private TextMeshProUGUI unlearningText;
-
+        
         [OdinSerialize] private Dictionary<string, BooleanVariable> gameplayModes;
-
+        [OdinSerialize] private TextMeshProUGUI debugText;
+        [OdinSerialize] private Spawner _spawner;
+        
         [ShowInInspector, ReadOnly] private bool gameRunning;
 
-        [SerializeField] private TextMeshProUGUI debugText;
-
         private IEnumerator unlearning;
+
+
         public bool GameRunning
         {
             get => gameRunning;
@@ -44,6 +45,8 @@ namespace BreakYourOwnGame
                 PauseGame();
             }
         }
+
+        [OdinSerialize] private SpriteRenderer _spriteRenderer;
 
         private void Start()
         {
@@ -74,35 +77,63 @@ namespace BreakYourOwnGame
             }
         }
 
-        public  void SwitchMode()
+        public void SwitchMode()
         {
             var roll = Random.Range(1, 4);
+            roll = 1;
             if (unlearning != null)
             {
                 StopCoroutine(unlearning);
                 unlearningText.gameObject.SetActive(false);
             }
 
+            float lastTimeScale = Time.timeScale;
+            
             unlearning = UnlearningTime();
             StartCoroutine(unlearning);
             switch (roll)
             {
-                case 1:
+                case 1:        
                     gameplayModes["Spawn_L"].Value = !gameplayModes["Spawn_L"].Value;
                     gameplayModes["Spawn_R"].Value = !gameplayModes["Spawn_R"].Value;
-                    FlipSprite.FlipX();
+                    FlipSprite(true, lastTimeScale);
                     break;
                 case 2:
                     gameplayModes["Jump_Player"].Value = !gameplayModes["Jump_Player"].Value;
                     gameplayModes["Jump_Obs"].Value = !gameplayModes["Jump_Obs"].Value;
                     break;
                 case 3:
-                    FlipSprite.FlipY();
+                    FlipSprite(false, lastTimeScale);
                     gameplayModes["Gravity"].Value = !gameplayModes["Gravity"].Value;
                     break;
             }
 
             UpdateText();
+        }
+
+
+        private void FlipSprite(bool horizontal, float lastTimeScale)
+        {
+            if (horizontal)
+            {
+                _spriteRenderer.flipX = !_spriteRenderer.flipX;
+                StartCoroutine(FlipObstacleSpeed(lastTimeScale));
+            }
+            else
+            {
+                _spriteRenderer.flipY = !_spriteRenderer.flipY;
+            }
+        }
+
+        private IEnumerator FlipObstacleSpeed(float timer)
+        {
+            yield return new WaitForSeconds(timer/2f);
+            var temp = _spriteRenderer.flipX ? _spawner.rightSpawnedObstacles : _spawner.leftSpawnedObstacles;
+            
+            foreach (var spawnedObstacle in temp)
+            {
+                spawnedObstacle.moveSpeed = spawnedObstacle.moveSpeed == _spawner.RMoveSpeed ? _spawner.LMoveSpeed : _spawner.RMoveSpeed;
+            }
         }
 
         private void UpdateText()
@@ -141,7 +172,6 @@ namespace BreakYourOwnGame
 
             while (Time.timeScale < timeScaleToGoBackTo && gameRunning)
             {
-                Debug.Log($"Increasing + {gameRunning}");
                 Time.timeScale += 0.1f;
                 yield return new WaitForSecondsRealtime(0.2f);
             }
