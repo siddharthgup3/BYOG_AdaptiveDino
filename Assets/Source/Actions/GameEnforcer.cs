@@ -37,6 +37,7 @@ namespace BreakYourOwnGame
                 if (value == false)
                 {
                     this.StopAllCoroutines();
+                    Time.timeScale = 0f;
                     unlearningText.enabled = false;
                 }
 
@@ -60,6 +61,7 @@ namespace BreakYourOwnGame
         {
             if (!GameRunning && Input.GetKeyDown(spaceKey))
             {
+                Debug.Log($"Reset");
                 Time.timeScale = 1f;
                 resetText.enabled = false;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -137,8 +139,9 @@ namespace BreakYourOwnGame
 
             unlearningText.gameObject.SetActive(false);
 
-            while (Time.timeScale < timeScaleToGoBackTo)
+            while (Time.timeScale < timeScaleToGoBackTo && gameRunning)
             {
+                Debug.Log($"Increasing + {gameRunning}");
                 Time.timeScale += 0.1f;
                 yield return new WaitForSecondsRealtime(0.2f);
             }
