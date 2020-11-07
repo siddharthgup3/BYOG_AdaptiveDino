@@ -17,18 +17,22 @@ namespace BreakYourOwnGame
 
         [FoldoutGroup("TMP references")] [OdinSerialize]
         private TextMeshProUGUI resetText;
+
         [FoldoutGroup("TMP references")] [OdinSerialize]
         private TextMeshProUGUI unlearningText;
-        
+
+        [FoldoutGroup("TMP references")] [OdinSerialize]
+        private TextMeshProUGUI debugText;
+
         [OdinSerialize] private Dictionary<string, BooleanVariable> gameplayModes;
-        [OdinSerialize] private TextMeshProUGUI debugText;
         [OdinSerialize] private Spawner _spawner;
         [OdinSerialize] private ShakeCamera _shakeCamera;
+        [OdinSerialize] private SpriteRenderer _spriteRenderer;
 
         [ShowInInspector, ReadOnly] private bool gameRunning;
 
-        private IEnumerator unlearning;
 
+        private IEnumerator unlearning;
 
         public bool GameRunning
         {
@@ -47,7 +51,6 @@ namespace BreakYourOwnGame
             }
         }
 
-        [OdinSerialize] private SpriteRenderer _spriteRenderer;
 
         private void Start()
         {
@@ -81,7 +84,7 @@ namespace BreakYourOwnGame
         public void SwitchMode()
         {
             var roll = Random.Range(1, 4);
-            roll = 1;
+            roll = 4;
             if (unlearning != null)
             {
                 StopCoroutine(unlearning);
@@ -89,12 +92,12 @@ namespace BreakYourOwnGame
             }
 
             float lastTimeScale = Time.timeScale;
-            
+
             unlearning = UnlearningTime();
             StartCoroutine(unlearning);
             switch (roll)
             {
-                case 1:        
+                case 1:
                     gameplayModes["Spawn_L"].Value = !gameplayModes["Spawn_L"].Value;
                     gameplayModes["Spawn_R"].Value = !gameplayModes["Spawn_R"].Value;
                     FlipSprite(true, lastTimeScale);
@@ -107,11 +110,15 @@ namespace BreakYourOwnGame
                     FlipSprite(false, lastTimeScale);
                     gameplayModes["Gravity"].Value = !gameplayModes["Gravity"].Value;
                     break;
+                case 4:
+                    _shakeCamera.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90f);
+                    break;
             }
 
             UpdateText();
         }
 
+        #region FlipSides
 
         private void FlipSprite(bool horizontal, float lastTimeScale)
         {
@@ -128,23 +135,20 @@ namespace BreakYourOwnGame
 
         private IEnumerator Bleh(float timer)
         {
-            yield return new WaitForSeconds(timer/2f);
+            yield return new WaitForSeconds(timer / 2f);
             var temp = _spriteRenderer.flipX ? _spawner.rightSpawnedObstacles : _spawner.leftSpawnedObstacles;
-            
+
             foreach (var spawnedObstacle in temp)
             {
-                spawnedObstacle.moveSpeed = spawnedObstacle.moveSpeed == _spawner.RMoveSpeed ? _spawner.LMoveSpeed : _spawner.RMoveSpeed;
+                spawnedObstacle.moveSpeed = spawnedObstacle.moveSpeed == _spawner.RMoveSpeed
+                    ? _spawner.LMoveSpeed
+                    : _spawner.RMoveSpeed;
             }
         }
 
-        private void UpdateText()
-        {
-            bool rightSpawn = gameplayModes["Spawn_R"].Value;
-            bool gravity = gameplayModes["Gravity"].Value;
-            bool jump = gameplayModes["Jump_Player"].Value;
+        #endregion
 
-            debugText.text = $"Right Spawn = {rightSpawn} \n InverseGravity = {gravity} \n PlayerJump = {jump}";
-        }
+        #region Adaptive Coroutines
 
         private void PauseGame()
         {
@@ -158,7 +162,7 @@ namespace BreakYourOwnGame
             var timeScaleToGoBackTo = Time.timeScale;
 
             Time.timeScale = 0f;
-            
+
             _shakeCamera.TriggerShake(0.01f);
 
             float temp = 1;
@@ -178,6 +182,18 @@ namespace BreakYourOwnGame
                 Time.timeScale += 0.1f;
                 yield return new WaitForSecondsRealtime(0.2f);
             }
+        }
+
+        #endregion
+
+
+        private void UpdateText()
+        {
+            bool rightSpawn = gameplayModes["Spawn_R"].Value;
+            bool gravity = gameplayModes["Gravity"].Value;
+            bool jump = gameplayModes["Jump_Player"].Value;
+
+            debugText.text = $"Right Spawn = {rightSpawn} \n InverseGravity = {gravity} \n PlayerJump = {jump}";
         }
     }
 }
