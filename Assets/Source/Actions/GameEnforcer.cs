@@ -30,8 +30,6 @@ namespace BreakYourOwnGame
         [ShowInInspector,ReadOnly] private Spawner _topSpawner;
         [ShowInInspector, ReadOnly] private bool gameRunning;
         
-
-
         private IEnumerator unlearning;
         private Transform mainCamera;
 
@@ -81,16 +79,11 @@ namespace BreakYourOwnGame
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 gameRunning = true;
             }
-
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                SwitchMode();
-            }
         }
 
         public void SwitchMode()
         {
-            var roll = Random.Range(1, 2);
+            var roll = Random.Range(1, 5);
             if (unlearning != null)
             {
                 StopCoroutine(unlearning);
@@ -117,7 +110,7 @@ namespace BreakYourOwnGame
                     gameplayModes["Gravity"].Value = !gameplayModes["Gravity"].Value;
                     break;
                 case 4:
-                    StartCoroutine(StartFlipCamera(mainCamera.eulerAngles.z + 90f));
+                    StartCoroutine(StartFlipCamera(mainCamera.eulerAngles.z + 90));
                     break;
             }
         }
