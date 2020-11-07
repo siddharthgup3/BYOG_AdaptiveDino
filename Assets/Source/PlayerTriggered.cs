@@ -8,7 +8,7 @@ namespace BreakYourOwnGame
     public class PlayerTriggered : SerializedMonoBehaviour
     {
         [OdinSerialize] private AudioClip deathClip;
-
+        [OdinSerialize] private ParticleSystem deathParticles;
         private GameEnforcer gameEnforcer;
         private void Awake()
         {
@@ -20,6 +20,7 @@ namespace BreakYourOwnGame
             if (other.gameObject.CompareTag("Obstacle"))
             {
                 Sound.audSource.PlayOneShot(deathClip);
+                deathParticles.Play();
                 gameEnforcer.GameRunning = false;
             }
         }

@@ -17,7 +17,7 @@ namespace BreakYourOwnGame
         private GameEnforcer _enforcer;
         private Grounded player;
 
-        public delegate bool Jump();
+        public delegate void Jump();
 
         public static event Jump playerJump;
         public static event Jump obstacleJump;
