@@ -2,26 +2,28 @@
 using System.Collections.Generic;
 using MyArchitecture;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace BreakYourOwnGame
 {
     public class Spawner : SerializedMonoBehaviour
     {
-        [FoldoutGroup("SOs for bool LR spawners")] [SerializeField]
+        [FoldoutGroup("SOs for bool LR spawners")] [OdinSerialize]
         private BooleanVariable rightSpawner;
 
-        [FoldoutGroup("SOs for bool LR spawners")] [SerializeField]
+        [FoldoutGroup("SOs for bool LR spawners")] [OdinSerialize]
         private BooleanVariable leftSpawner;
 
-        [FoldoutGroup("LR Spawner Transforms")] [SerializeField]
+        [FoldoutGroup("LR Spawner Transforms")] [OdinSerialize]
         private Transform rightSpawnObject;
 
-        [FoldoutGroup("LR Spawner Transforms")] [SerializeField]
+        [FoldoutGroup("LR Spawner Transforms")] [OdinSerialize]
         private Transform leftSpawnObject;
 
-        [FoldoutGroup("Obstacles")] [SerializeField]
-        private GameObject obstacle;
+        [FoldoutGroup("Obstacles")] [OdinSerialize]
+        private List<GameObject> obstaclesList;
 
 
         [SerializeField] public FloatVariable RMoveSpeed;
@@ -29,8 +31,8 @@ namespace BreakYourOwnGame
 
         private float lastSpawnTime = 0f;
 
-        [ShowInInspector, ReadOnly] public  List<MoveEntity> rightSpawnedObstacles;
-        [ShowInInspector, ReadOnly] public  List<MoveEntity> leftSpawnedObstacles;
+        [ShowInInspector, ReadOnly] public List<MoveEntity> rightSpawnedObstacles;
+        [ShowInInspector, ReadOnly] public List<MoveEntity> leftSpawnedObstacles;
 
         private void Start()
         {
@@ -51,9 +53,11 @@ namespace BreakYourOwnGame
 
         private void Spawn()
         {
+            GameObject randomObstacle = obstaclesList[Random.Range(0, obstaclesList.Count)];
+
             if (rightSpawner.Value)
             {
-                var instantiatedObstacle = Instantiate(obstacle, rightSpawnObject.position, Quaternion.identity,
+                var instantiatedObstacle = Instantiate(randomObstacle, rightSpawnObject.position, Quaternion.identity,
                     rightSpawnObject);
                 var moveEntity = instantiatedObstacle.GetComponent<MoveEntity>();
                 moveEntity.moveSpeed = RMoveSpeed;
@@ -64,7 +68,7 @@ namespace BreakYourOwnGame
             if (leftSpawner.Value)
             {
                 var instantiatedObstacle =
-                    Instantiate(obstacle, leftSpawnObject.position, Quaternion.identity, leftSpawnObject);
+                    Instantiate(randomObstacle, leftSpawnObject.position, Quaternion.identity, leftSpawnObject);
                 var moveEntity = instantiatedObstacle.GetComponent<MoveEntity>();
                 moveEntity.moveSpeed = LMoveSpeed;
                 moveEntity._spawner = this;

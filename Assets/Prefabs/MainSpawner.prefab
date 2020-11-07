@@ -109,19 +109,49 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 26e0bac0be91ca14ea19aa03de791b38, type: 2}
+    - {fileID: 11400000, guid: 04fd631471d985f41bbac4e472646082, type: 2}
+    - {fileID: 7694950475696709690}
+    - {fileID: 5803340863772195870}
+    - {fileID: 1599050713634048181, guid: b3b1ff203eae43545aa3bac49783310d, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
-  rightSpawner: {fileID: 11400000, guid: 26e0bac0be91ca14ea19aa03de791b38, type: 2}
-  leftSpawner: {fileID: 11400000, guid: 04fd631471d985f41bbac4e472646082, type: 2}
-  rightSpawnObject: {fileID: 7694950475696709690}
-  leftSpawnObject: {fileID: 5803340863772195870}
-  obstacle: {fileID: 4384250402836082170, guid: 1dc030ae0c8ae6040a5d9d4abcfa77bc, type: 3}
+    SerializationNodes:
+    - Name: rightSpawner
+      Entry: 10
+      Data: 0
+    - Name: leftSpawner
+      Entry: 10
+      Data: 1
+    - Name: rightSpawnObject
+      Entry: 10
+      Data: 2
+    - Name: leftSpawnObject
+      Entry: 10
+      Data: 3
+    - Name: obstaclesList
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   RMoveSpeed: {fileID: 11400000, guid: 7756ad41d4bd36649bc0544b09876735, type: 2}
   LMoveSpeed: {fileID: 11400000, guid: a4397e7c9fcaba44a8a36294b30fe03c, type: 2}
+  rightSpawnedObstacles: []
+  leftSpawnedObstacles: []
 --- !u!114 &6762633319047933371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,16 +167,50 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 26e0bac0be91ca14ea19aa03de791b38, type: 2}
+    - {fileID: 11400000, guid: 04fd631471d985f41bbac4e472646082, type: 2}
+    - {fileID: 7694950475696709690}
+    - {fileID: 5803340863772195870}
+    - {fileID: 4384250402836082170, guid: 1dc030ae0c8ae6040a5d9d4abcfa77bc, type: 3}
+    - {fileID: 4384250402836082170, guid: 12c2f57bdda615d42b85bf3b3aca52cc, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
-  rightSpawner: {fileID: 11400000, guid: 26e0bac0be91ca14ea19aa03de791b38, type: 2}
-  leftSpawner: {fileID: 11400000, guid: 04fd631471d985f41bbac4e472646082, type: 2}
-  rightSpawnObject: {fileID: 7694950475696709690}
-  leftSpawnObject: {fileID: 5803340863772195870}
-  obstacle: {fileID: 3617188115334264091, guid: b3b1ff203eae43545aa3bac49783310d, type: 3}
+    SerializationNodes:
+    - Name: rightSpawner
+      Entry: 10
+      Data: 0
+    - Name: leftSpawner
+      Entry: 10
+      Data: 1
+    - Name: rightSpawnObject
+      Entry: 10
+      Data: 2
+    - Name: leftSpawnObject
+      Entry: 10
+      Data: 3
+    - Name: obstaclesList
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   RMoveSpeed: {fileID: 11400000, guid: 7756ad41d4bd36649bc0544b09876735, type: 2}
   LMoveSpeed: {fileID: 11400000, guid: a4397e7c9fcaba44a8a36294b30fe03c, type: 2}
+  rightSpawnedObstacles: []
+  leftSpawnedObstacles: []
