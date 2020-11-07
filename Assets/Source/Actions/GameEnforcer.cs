@@ -22,11 +22,14 @@ namespace BreakYourOwnGame
         private TextMeshProUGUI unlearningText;
 
         [OdinSerialize] private Dictionary<string, BooleanVariable> gameplayModes;
-        [OdinSerialize] private Spawner _spawner;
         [OdinSerialize] private ShakeCamera _shakeCamera;
         [OdinSerialize] private SpriteRenderer _spriteRenderer;
-
+        [OdinSerialize] private GameObject mainSpawner;
+        
+        [ShowInInspector,ReadOnly] private Spawner _bottomSpawner;
+        [ShowInInspector,ReadOnly] private Spawner _topSpawner;
         [ShowInInspector, ReadOnly] private bool gameRunning;
+        
 
 
         private IEnumerator unlearning;
@@ -54,6 +57,11 @@ namespace BreakYourOwnGame
         {
             mainCamera = _shakeCamera.gameObject.transform;
 
+            var temp = mainSpawner.GetComponents<Spawner>();
+            _bottomSpawner = temp[0];
+            _topSpawner = temp[1];
+            
+            
             gameRunning = true;
             gameplayModes["Gravity"].Value = true;
             gameplayModes["Jump_Player"].Value = true;
@@ -82,7 +90,7 @@ namespace BreakYourOwnGame
 
         public void SwitchMode()
         {
-            var roll = Random.Range(1, 5);
+            var roll = Random.Range(1, 2);
             if (unlearning != null)
             {
                 StopCoroutine(unlearning);
@@ -132,13 +140,21 @@ namespace BreakYourOwnGame
         private IEnumerator Bleh(float timer)
         {
             yield return new WaitForSeconds(timer / 2f);
-            var temp = _spriteRenderer.flipX ? _spawner.rightSpawnedObstacles : _spawner.leftSpawnedObstacles;
+            var temp = _spriteRenderer.flipX ? _bottomSpawner.rightSpawnedObstacles : _bottomSpawner.leftSpawnedObstacles;
 
             foreach (var spawnedObstacle in temp)
             {
-                spawnedObstacle.moveSpeed = spawnedObstacle.moveSpeed == _spawner.RMoveSpeed
-                    ? _spawner.LMoveSpeed
-                    : _spawner.RMoveSpeed;
+                spawnedObstacle.moveSpeed = spawnedObstacle.moveSpeed == _bottomSpawner.RMoveSpeed
+                    ? _bottomSpawner.LMoveSpeed
+                    : _bottomSpawner.RMoveSpeed;
+            }
+            
+            var otherTemp = _spriteRenderer.flipX ? _topSpawner.rightSpawnedObstacles : _topSpawner.leftSpawnedObstacles;
+            foreach (var spawnedObstacle in otherTemp)
+            {
+                spawnedObstacle.moveSpeed = spawnedObstacle.moveSpeed == _bottomSpawner.RMoveSpeed
+                    ? _bottomSpawner.LMoveSpeed
+                    : _bottomSpawner.RMoveSpeed;
             }
         }
 

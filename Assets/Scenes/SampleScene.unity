@@ -1000,17 +1000,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8118309590256140372, guid: d65ade6c8c85b85438363d0e772725ea, type: 3}
   m_PrefabInstance: {fileID: 3630225606740950782}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1674867949 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7771074265411638686, guid: 6042442c97661a14dadc87e706082abd, type: 3}
-  m_PrefabInstance: {fileID: 1895395027}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 375f1b1283b548dabae2ca5fc0457179, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1683128874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,15 +1139,14 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 2114437608}
     - {fileID: 1728582623}
-    - {fileID: 1954501053}
     - {fileID: 11400000, guid: 8d2b5ea73336bda458a43a7837bbac09, type: 2}
     - {fileID: 11400000, guid: e92c187ff39bf78408b5dcb48f90bf28, type: 2}
     - {fileID: 11400000, guid: 2d5337772c5767443a4630e90063c0b2, type: 2}
     - {fileID: 11400000, guid: 04fd631471d985f41bbac4e472646082, type: 2}
     - {fileID: 11400000, guid: 26e0bac0be91ca14ea19aa03de791b38, type: 2}
-    - {fileID: 1674867949}
     - {fileID: 519420033}
     - {fileID: 1415200169}
+    - {fileID: 1814623379}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -1173,9 +1161,6 @@ MonoBehaviour:
     - Name: unlearningText
       Entry: 10
       Data: 1
-    - Name: debugText
-      Entry: 10
-      Data: 2
     - Name: gameplayModes
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[MyArchitecture.BooleanVariable,
@@ -1198,7 +1183,7 @@ MonoBehaviour:
       Data: Gravity
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -1210,7 +1195,7 @@ MonoBehaviour:
       Data: Jump_Player
     - Name: $v
       Entry: 10
-      Data: 4
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -1222,7 +1207,7 @@ MonoBehaviour:
       Data: Jump_Obs
     - Name: $v
       Entry: 10
-      Data: 5
+      Data: 4
     - Name: 
       Entry: 8
       Data: 
@@ -1234,7 +1219,7 @@ MonoBehaviour:
       Data: Spawn_L
     - Name: $v
       Entry: 10
-      Data: 6
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -1246,7 +1231,7 @@ MonoBehaviour:
       Data: Spawn_R
     - Name: $v
       Entry: 10
-      Data: 7
+      Data: 6
     - Name: 
       Entry: 8
       Data: 
@@ -1256,15 +1241,15 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: _spawner
-      Entry: 10
-      Data: 8
     - Name: _shakeCamera
       Entry: 10
-      Data: 9
+      Data: 7
     - Name: _spriteRenderer
       Entry: 10
-      Data: 10
+      Data: 8
+    - Name: mainSpawner
+      Entry: 10
+      Data: 9
 --- !u!4 &1702770912
 Transform:
   m_ObjectHideFlags: 0
@@ -1620,6 +1605,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728582620}
   m_CullTransparentMesh: 0
+--- !u!1 &1814623379 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5962178878775641538, guid: 6042442c97661a14dadc87e706082abd, type: 3}
+  m_PrefabInstance: {fileID: 1895395027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1892224406
 GameObject:
   m_ObjectHideFlags: 0
