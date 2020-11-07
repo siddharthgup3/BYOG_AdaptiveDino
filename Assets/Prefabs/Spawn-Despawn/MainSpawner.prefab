@@ -114,6 +114,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 04fd631471d985f41bbac4e472646082, type: 2}
     - {fileID: 7694950475696709690}
     - {fileID: 5803340863772195870}
+    - {fileID: 1599050713634048181, guid: 4de057cda68c0004db45abae555d9251, type: 3}
+    - {fileID: 1599050713634048181, guid: 6f017e15df9385f4fa01d2b9d9a8e0fa, type: 3}
+    - {fileID: 1599050713634048181, guid: 993f1496409f7b54c95591020c5097a8, type: 3}
+    - {fileID: 1599050713634048181, guid: ee3367737c22ff849875011b2860ca96, type: 3}
     - {fileID: 1599050713634048181, guid: b3b1ff203eae43545aa3bac49783310d, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -138,10 +142,22 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 5
     - Name: 
       Entry: 10
       Data: 4
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 10
+      Data: 8
     - Name: 
       Entry: 13
       Data: 
@@ -174,6 +190,7 @@ MonoBehaviour:
     - {fileID: 5803340863772195870}
     - {fileID: 4384250402836082170, guid: 1dc030ae0c8ae6040a5d9d4abcfa77bc, type: 3}
     - {fileID: 4384250402836082170, guid: 12c2f57bdda615d42b85bf3b3aca52cc, type: 3}
+    - {fileID: 4384250402836082170, guid: d7c91480b6e069749bb55b33930149fe, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -197,13 +214,16 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 10
       Data: 4
     - Name: 
       Entry: 10
       Data: 5
+    - Name: 
+      Entry: 10
+      Data: 6
     - Name: 
       Entry: 13
       Data: 
