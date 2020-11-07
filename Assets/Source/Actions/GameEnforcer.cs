@@ -83,7 +83,7 @@ namespace BreakYourOwnGame
 
         public void SwitchMode()
         {
-            var roll = Random.Range(2, 4);
+            var roll = Random.Range(1, 5);
             if (unlearning != null)
             {
                 StopCoroutine(unlearning);
