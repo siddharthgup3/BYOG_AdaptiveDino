@@ -21,9 +21,6 @@ namespace BreakYourOwnGame
         [FoldoutGroup("TMP references")] [OdinSerialize]
         private TextMeshProUGUI unlearningText;
 
-        [FoldoutGroup("TMP references")] [OdinSerialize]
-        private TextMeshProUGUI debugText;
-
         [OdinSerialize] private Dictionary<string, BooleanVariable> gameplayModes;
         [OdinSerialize] private Spawner _spawner;
         [OdinSerialize] private ShakeCamera _shakeCamera;
@@ -33,6 +30,7 @@ namespace BreakYourOwnGame
 
 
         private IEnumerator unlearning;
+        private Transform mainCamera;
 
         public bool GameRunning
         {
@@ -54,6 +52,8 @@ namespace BreakYourOwnGame
 
         private void Start()
         {
+            mainCamera = _shakeCamera.gameObject.transform;
+
             gameRunning = true;
             gameplayModes["Gravity"].Value = true;
             gameplayModes["Jump_Player"].Value = true;
@@ -61,7 +61,6 @@ namespace BreakYourOwnGame
             gameplayModes["Spawn_L"].Value = false;
             gameplayModes["Spawn_R"].Value = true;
             Time.timeScale = 1f;
-            UpdateText();
         }
 
         private void Update()
@@ -83,8 +82,7 @@ namespace BreakYourOwnGame
 
         public void SwitchMode()
         {
-            var roll = Random.Range(1, 4);
-            roll = 4;
+            var roll = Random.Range(1, 5);
             if (unlearning != null)
             {
                 StopCoroutine(unlearning);
@@ -111,11 +109,9 @@ namespace BreakYourOwnGame
                     gameplayModes["Gravity"].Value = !gameplayModes["Gravity"].Value;
                     break;
                 case 4:
-                    _shakeCamera.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90f);
+                    StartCoroutine(StartFlipCamera(mainCamera.eulerAngles.z + 90f));
                     break;
             }
-
-            UpdateText();
         }
 
         #region FlipSides
@@ -148,6 +144,30 @@ namespace BreakYourOwnGame
 
         #endregion
 
+
+        #region FlipCamera
+
+        private IEnumerator StartFlipCamera(float targetZ)
+        {
+            float progress = 0f;
+            float startingZ = mainCamera.eulerAngles.z;
+            while (true)
+            {
+                progress += Time.unscaledDeltaTime;
+                if (progress >= 1)
+                    break;
+
+                var bla = Mathf.Lerp(startingZ, targetZ, progress);
+                mainCamera.eulerAngles = new Vector3(0, 0, bla);
+                yield return null;
+            }
+
+            yield return null;
+        }
+
+        #endregion
+        
+        
         #region Adaptive Coroutines
 
         private void PauseGame()
@@ -185,15 +205,5 @@ namespace BreakYourOwnGame
         }
 
         #endregion
-
-
-        private void UpdateText()
-        {
-            bool rightSpawn = gameplayModes["Spawn_R"].Value;
-            bool gravity = gameplayModes["Gravity"].Value;
-            bool jump = gameplayModes["Jump_Player"].Value;
-
-            debugText.text = $"Right Spawn = {rightSpawn} \n InverseGravity = {gravity} \n PlayerJump = {jump}";
-        }
     }
 }

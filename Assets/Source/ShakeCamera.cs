@@ -20,7 +20,7 @@ namespace BreakYourOwnGame
             if (shakeDuration > 0)
             {
                 transform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude;
-                shakeDuration -= Time.deltaTime * dampingSpeed;
+                shakeDuration -= Time.unscaledDeltaTime * dampingSpeed;
             }
 
             if (shakeDuration <= 0) transform.localPosition = initialPosition;
