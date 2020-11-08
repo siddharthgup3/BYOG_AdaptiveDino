@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using MyArchitecture;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using TMPro;
 using UnityEngine;
 
@@ -10,11 +12,16 @@ namespace BreakYourOwnGame
     public class TimerUpdater : SerializedMonoBehaviour
     {
         [SerializeField] private AudioClip levelUp;
-        
+        [OdinSerialize] private BooleanVariable easterEgg;
+
+        [OdinSerialize] private ParticleSystem confettiParticleSystem;
+
         [ShowInInspector, ReadOnly] private TextMeshProUGUI scoreText;
         [ShowInInspector, ReadOnly] private uint actualScore;
 
         private float timeSinceStart;
+        private uint newLevel = 1;
+
         private void Awake()
         {
             scoreText = GetComponent<TextMeshProUGUI>();
@@ -25,9 +32,17 @@ namespace BreakYourOwnGame
             timeSinceStart += Time.deltaTime;
             actualScore = (uint) (timeSinceStart * 100);
 
-            if (actualScore % 1000 == 0 && actualScore > 0)
+            if (actualScore >= 10000)
             {
-                Sound.audSource.PlayOneShot(levelUp, 0.5f);
+                easterEgg.Value = true;
+            }
+
+
+            if (actualScore / 1000 == newLevel && actualScore > 0)
+            {
+                newLevel++;
+                confettiParticleSystem.Play();
+                Sound.audSource.PlayOneShot(levelUp, 0.2f);
                 Time.timeScale += Time.timeScale / 10f;
             }
 
@@ -36,6 +51,7 @@ namespace BreakYourOwnGame
             {
                 temp += "0";
             }
+
             scoreText.text = temp + actualScore;
         }
     }

@@ -11,6 +11,8 @@ namespace BreakYourOwnGame
         [OdinSerialize] private float jumpForce;
         [OdinSerialize] private AudioClip jumpClip;
 
+        [OdinSerialize] private ParticleSystem particleSystem;
+
         [ShowInInspector, ReadOnly] private Grounded groundScript;
 
         private Rigidbody2D rb;
@@ -37,22 +39,23 @@ namespace BreakYourOwnGame
         }
 
 
-        private bool PerformJump()
+        private void PerformJump()
         {
+            ParticleSystem.MainModule main = particleSystem.main;
+            main.gravityModifier = rb.gravityScale > 0 ? 1 : -1;
+            
             if (rb.gravityScale > 0 && groundScript.IsGrounded)
             {
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 Sound.audSource.PlayOneShot(jumpClip, 0.5f);
+                particleSystem.Play();
             }
             else if (rb.gravityScale < 0 && groundScript.IsGrounded)
             {
                 rb.AddForce(-Vector2.up * jumpForce, ForceMode2D.Impulse);
                 Sound.audSource.PlayOneShot(jumpClip, 0.5f);
+                particleSystem.Play();
             }
-            else
-                return false;
-
-            return true;
         }
 
         private void OnDisable()

@@ -1,0 +1,236 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2075617546979126755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7694950475696709690}
+  m_Layer: 0
+  m_Name: Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7694950475696709690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075617546979126755}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5962178878775641539}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2198093154890624374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5803340863772195870}
+  m_Layer: 0
+  m_Name: Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5803340863772195870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198093154890624374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5962178878775641539}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5962178878775641538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5962178878775641539}
+  - component: {fileID: 7771074265411638686}
+  - component: {fileID: 6762633319047933371}
+  m_Layer: 0
+  m_Name: MainSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &5962178878775641539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962178878775641538}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5803340863772195870}
+  - {fileID: 7694950475696709690}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7771074265411638686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962178878775641538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375f1b1283b548dabae2ca5fc0457179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 26e0bac0be91ca14ea19aa03de791b38, type: 2}
+    - {fileID: 11400000, guid: 04fd631471d985f41bbac4e472646082, type: 2}
+    - {fileID: 7694950475696709690}
+    - {fileID: 5803340863772195870}
+    - {fileID: 1599050713634048181, guid: 4de057cda68c0004db45abae555d9251, type: 3}
+    - {fileID: 1599050713634048181, guid: 6f017e15df9385f4fa01d2b9d9a8e0fa, type: 3}
+    - {fileID: 1599050713634048181, guid: 993f1496409f7b54c95591020c5097a8, type: 3}
+    - {fileID: 1599050713634048181, guid: ee3367737c22ff849875011b2860ca96, type: 3}
+    - {fileID: 1599050713634048181, guid: b3b1ff203eae43545aa3bac49783310d, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: rightSpawner
+      Entry: 10
+      Data: 0
+    - Name: leftSpawner
+      Entry: 10
+      Data: 1
+    - Name: rightSpawnObject
+      Entry: 10
+      Data: 2
+    - Name: leftSpawnObject
+      Entry: 10
+      Data: 3
+    - Name: obstaclesList
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 10
+      Data: 8
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  RMoveSpeed: {fileID: 11400000, guid: 7756ad41d4bd36649bc0544b09876735, type: 2}
+  LMoveSpeed: {fileID: 11400000, guid: a4397e7c9fcaba44a8a36294b30fe03c, type: 2}
+  rightSpawnedObstacles: []
+  leftSpawnedObstacles: []
+--- !u!114 &6762633319047933371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962178878775641538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375f1b1283b548dabae2ca5fc0457179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 26e0bac0be91ca14ea19aa03de791b38, type: 2}
+    - {fileID: 11400000, guid: 04fd631471d985f41bbac4e472646082, type: 2}
+    - {fileID: 7694950475696709690}
+    - {fileID: 5803340863772195870}
+    - {fileID: 4384250402836082170, guid: 1dc030ae0c8ae6040a5d9d4abcfa77bc, type: 3}
+    - {fileID: 4384250402836082170, guid: d7c91480b6e069749bb55b33930149fe, type: 3}
+    - {fileID: 4384250402836082170, guid: 12c2f57bdda615d42b85bf3b3aca52cc, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: rightSpawner
+      Entry: 10
+      Data: 0
+    - Name: leftSpawner
+      Entry: 10
+      Data: 1
+    - Name: rightSpawnObject
+      Entry: 10
+      Data: 2
+    - Name: leftSpawnObject
+      Entry: 10
+      Data: 3
+    - Name: obstaclesList
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  RMoveSpeed: {fileID: 11400000, guid: 7756ad41d4bd36649bc0544b09876735, type: 2}
+  LMoveSpeed: {fileID: 11400000, guid: a4397e7c9fcaba44a8a36294b30fe03c, type: 2}
+  rightSpawnedObstacles: []
+  leftSpawnedObstacles: []
