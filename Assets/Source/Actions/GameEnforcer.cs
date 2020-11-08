@@ -25,6 +25,9 @@ namespace BreakYourOwnGame
         [OdinSerialize] private ShakeCamera _shakeCamera;
         [OdinSerialize] private SpriteRenderer _spriteRenderer;
         [OdinSerialize] private GameObject mainSpawner;
+
+        [OdinSerialize] private FloatVariable L1moveSpeed;
+        [OdinSerialize] private FloatVariable L2moveSpeed;
         
         [ShowInInspector,ReadOnly] private Spawner _bottomSpawner;
         [ShowInInspector,ReadOnly] private Spawner _topSpawner;
@@ -66,6 +69,12 @@ namespace BreakYourOwnGame
             gameplayModes["Jump_Obs"].Value = false;
             gameplayModes["Spawn_L"].Value = false;
             gameplayModes["Spawn_R"].Value = true;
+
+            if (L1moveSpeed.Value < 0)
+                L1moveSpeed.Value *= -1;
+            if (L2moveSpeed.Value < 0)
+                L2moveSpeed.Value *= -1;
+            
             Time.timeScale = 1f;
         }
 
@@ -83,7 +92,7 @@ namespace BreakYourOwnGame
 
         public void SwitchMode()
         {
-            var roll = Random.Range(1, 5);
+            var roll = 1;//Random.Range(1, 5);
             if (unlearning != null)
             {
                 StopCoroutine(unlearning);
@@ -135,6 +144,9 @@ namespace BreakYourOwnGame
             yield return new WaitForSeconds(timer / 2f);
             var temp = _spriteRenderer.flipX ? _bottomSpawner.rightSpawnedObstacles : _bottomSpawner.leftSpawnedObstacles;
 
+            L1moveSpeed.Value *= -1;
+            L2moveSpeed.Value *= -1;
+            
             foreach (var spawnedObstacle in temp)
             {
                 spawnedObstacle.moveSpeed = spawnedObstacle.moveSpeed == _bottomSpawner.RMoveSpeed
