@@ -110,7 +110,7 @@ namespace BreakYourOwnGame
                     gameplayModes["Gravity"].Value = !gameplayModes["Gravity"].Value;
                     break;
                 case 4:
-                    StartCoroutine(StartFlipCamera(mainCamera.eulerAngles.z + 90));
+                    StartCoroutine(StartFlipCamera(mainCamera.eulerAngles.z + 180));
                     break;
             }
         }
