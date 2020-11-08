@@ -189,8 +189,8 @@ MonoBehaviour:
     - {fileID: 7694950475696709690}
     - {fileID: 5803340863772195870}
     - {fileID: 4384250402836082170, guid: 1dc030ae0c8ae6040a5d9d4abcfa77bc, type: 3}
-    - {fileID: 4384250402836082170, guid: 12c2f57bdda615d42b85bf3b3aca52cc, type: 3}
     - {fileID: 4384250402836082170, guid: d7c91480b6e069749bb55b33930149fe, type: 3}
+    - {fileID: 4384250402836082170, guid: 12c2f57bdda615d42b85bf3b3aca52cc, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []

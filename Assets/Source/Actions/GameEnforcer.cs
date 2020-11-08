@@ -28,12 +28,13 @@ namespace BreakYourOwnGame
 
         [OdinSerialize] private FloatVariable L1moveSpeed;
         [OdinSerialize] private FloatVariable L2moveSpeed;
-        
-        [ShowInInspector,ReadOnly] private Spawner _bottomSpawner;
-        [ShowInInspector,ReadOnly] private Spawner _topSpawner;
+
+        [ShowInInspector, ReadOnly] private Spawner _bottomSpawner;
+        [ShowInInspector, ReadOnly] private Spawner _topSpawner;
         [ShowInInspector, ReadOnly] private bool gameRunning;
-        
+
         private IEnumerator unlearning;
+        private IEnumerator rotateCamera;
         private Transform mainCamera;
 
         public bool GameRunning
@@ -61,8 +62,8 @@ namespace BreakYourOwnGame
             var temp = mainSpawner.GetComponents<Spawner>();
             _bottomSpawner = temp[0];
             _topSpawner = temp[1];
-            
-            
+
+
             gameRunning = true;
             gameplayModes["Gravity"].Value = true;
             gameplayModes["Jump_Player"].Value = true;
@@ -74,7 +75,7 @@ namespace BreakYourOwnGame
                 L1moveSpeed.Value *= -1;
             if (L2moveSpeed.Value < 0)
                 L2moveSpeed.Value *= -1;
-            
+
             Time.timeScale = 1f;
         }
 
@@ -92,7 +93,7 @@ namespace BreakYourOwnGame
 
         public void SwitchMode()
         {
-            var roll = 1;//Random.Range(1, 5);
+            var roll = Random.Range(1, 5);
             if (unlearning != null)
             {
                 StopCoroutine(unlearning);
@@ -119,7 +120,10 @@ namespace BreakYourOwnGame
                     gameplayModes["Gravity"].Value = !gameplayModes["Gravity"].Value;
                     break;
                 case 4:
-                    StartCoroutine(StartFlipCamera(mainCamera.eulerAngles.z + 180));
+                    if (rotateCamera != null)
+                        StartCoroutine(rotateCamera);
+                    rotateCamera = (StartFlipCamera(mainCamera.eulerAngles.z + 180));
+                    StartCoroutine(rotateCamera);
                     break;
             }
         }
@@ -142,19 +146,23 @@ namespace BreakYourOwnGame
         private IEnumerator Bleh(float timer)
         {
             yield return new WaitForSeconds(timer / 2f);
-            var temp = _spriteRenderer.flipX ? _bottomSpawner.rightSpawnedObstacles : _bottomSpawner.leftSpawnedObstacles;
+            var temp = _spriteRenderer.flipX
+                ? _bottomSpawner.rightSpawnedObstacles
+                : _bottomSpawner.leftSpawnedObstacles;
 
             L1moveSpeed.Value *= -1;
             L2moveSpeed.Value *= -1;
-            
+
             foreach (var spawnedObstacle in temp)
             {
                 spawnedObstacle.moveSpeed = spawnedObstacle.moveSpeed == _bottomSpawner.RMoveSpeed
                     ? _bottomSpawner.LMoveSpeed
                     : _bottomSpawner.RMoveSpeed;
             }
-            
-            var otherTemp = _spriteRenderer.flipX ? _topSpawner.rightSpawnedObstacles : _topSpawner.leftSpawnedObstacles;
+
+            var otherTemp = _spriteRenderer.flipX
+                ? _topSpawner.rightSpawnedObstacles
+                : _topSpawner.leftSpawnedObstacles;
             foreach (var spawnedObstacle in otherTemp)
             {
                 spawnedObstacle.moveSpeed = spawnedObstacle.moveSpeed == _bottomSpawner.RMoveSpeed
@@ -175,20 +183,23 @@ namespace BreakYourOwnGame
             while (true)
             {
                 progress += Time.unscaledDeltaTime;
-                if (progress >= 1)
-                    break;
+
 
                 var bla = Mathf.Lerp(startingZ, targetZ, progress);
+
                 mainCamera.eulerAngles = new Vector3(0, 0, bla);
+                
+                if(Math.Abs(mainCamera.eulerAngles.z - 180) < 0.01)
+                    break;
                 yield return null;
             }
 
-            yield return null;
+
         }
 
         #endregion
-        
-        
+
+
         #region Adaptive Coroutines
 
         private void PauseGame()
