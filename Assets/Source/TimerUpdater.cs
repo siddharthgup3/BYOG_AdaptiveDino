@@ -42,7 +42,7 @@ namespace BreakYourOwnGame
             {
                 newLevel++;
                 confettiParticleSystem.Play();
-                Sound.audSource.PlayOneShot(levelUp, 0.5f);
+                Sound.audSource.PlayOneShot(levelUp, 0.2f);
                 Time.timeScale += Time.timeScale / 10f;
             }
 
